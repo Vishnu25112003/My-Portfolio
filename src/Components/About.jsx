@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileAlt } from "@fortawesome/free-solid-svg-icons";
 import "../App.css";
+import AboutImg from '../assets/Images/wallpaper2.jpg'
 
 const About = () => {
   const text = "View My Resume";
@@ -33,19 +34,21 @@ const About = () => {
     return () => clearInterval(cursorInterval);
   }, []);
 
-  const handleBounce = (e) => {
-    e.target.classList.add("animate-bounce");
-    setTimeout(() => {
-      e.target.classList.remove("animate-bounce");
-    }, 1000);
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = "/Resume.pdf"; // Path to your resume in the public folder
+    link.download = "Vishnu_Resume.pdf"; // Name of the downloaded file
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
-    <div className="bg-gray-900 text-white min-h-screen flex flex-col md:flex-row items-center justify-center p-6 md:gap-12">
+    <div id="about" className="bg-gray-900 text-white min-h-screen flex flex-col md:flex-row items-center justify-center p-6 md:gap-12">
       {/* Image Section */}
       <div className="w-full md:w-1/2 flex justify-center">
         <img
-          src="https://storage.googleapis.com/a1aa/image/cAnJYwEk52jfSaJDipKMljkrmpNcFU01vop1oqBHvrU.jpg"
+          src={AboutImg}
           alt="About Me"
           className="rounded-lg shadow-lg w-full max-w-lg"
         />
@@ -66,7 +69,7 @@ const About = () => {
         </div>
 
         {/* Typing Effect */}
-        <div className="mt-4 text-xl font-bold">
+        <div className="text-xl font-bold">
           <span>{typedText}</span>
           <span className={`${showCursor ? "inline" : "hidden"}`}>&#124;</span>
         </div>
@@ -74,7 +77,7 @@ const About = () => {
         <div className="mt-4">
           <button
             className="inline-flex items-center bg-white text-blue-500 font-bold py-2 px-4 rounded-lg shadow-lg transition-all duration-300 hover:bg-blue-500 hover:text-white"
-            onClick={handleBounce}
+            onClick={handleDownload}
           >
             <FontAwesomeIcon icon={faFileAlt} className="mr-2" />
             My Resume
