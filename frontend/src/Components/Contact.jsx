@@ -19,7 +19,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/contact", formData);
+      await axios.post("https://my-portfolio-y7q8.onrender.com/api/contact", formData);
       setStatus("✅ Message sent successfully!");
       setShowPopup(true); // Show popup
       setFormData({ name: "", email: "", message: "" });
