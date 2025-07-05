@@ -51,5 +51,7 @@ npm run dev
 This project is licensed for personal and portfolio use. Feel free to fork and modify it with credit.
 
 Author
+
 Vishnu M
+
 GitHub - https://github.com/Vishnu25112003
